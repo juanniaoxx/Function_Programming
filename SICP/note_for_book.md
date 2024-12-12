@@ -19,7 +19,7 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 > 按默认安装即可
 > ```
 >
-> ![image-20241212202424174](assets/配置环境(1).png)
+> ![image-20241212202424174](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83(1).png?raw=true)
 >
 > 点击`file` ---> `package manager` ---> 搜索`sicp`回车、自动下载。
 >
@@ -27,7 +27,7 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 >
 > 完成后在上方输入`#lang sicp`在点右上`Run`
 >
-> 下方提示![image-20241212202729093](assets/配置环境（2）.png)
+> 下方提示![image-20241212202729093](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%EF%BC%882%EF%BC%89.png?raw=true)
 >
 > 即配置成功！
 
@@ -138,9 +138,10 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 
 <details><summary>Tree represntation(Try it yourself)</summary>
     <div>
-        <img src= "assets/tree_representation.png">
+        <img src= "https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/tree_representation.png?raw=true">
     </div>
 </details>
+
 
 > # take care of the primitive cases 
 >

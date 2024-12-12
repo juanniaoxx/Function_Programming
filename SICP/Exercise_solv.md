@@ -8,7 +8,7 @@
 
 ### 1.1
 
-![image-20241212233454816](assets/Ex1_1.png)
+![image-20241212233454816](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_1.png?raw=true)
 
 <details><summary>Sol</summary>
     <pre>
@@ -31,7 +31,7 @@
 
 ### 1.2
 
-![image-20241212234712157](assets/Ex1_2.png)
+![image-20241212234712157](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_2.png?raw=true)
 
 <details><summary>Sol</summary>
 	<pre>
@@ -52,7 +52,7 @@
 
 ### 1.3
 
-![image-20241212235528248](assets/Ex1_3.png)
+![image-20241212235528248](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_3.png?raw=true)
 
 <details>
 	 	   <summary>Sol</summary>
@@ -68,13 +68,13 @@
 
 ### 1.4
 
-![image-20241213002259324](assets/Ex1_4.png)
+![image-20241213002259324](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_4.png?raw=true)
 
 关注点在`((if (> b 0) + -) a b)` if相当于直接返回了一个表达式
 
 ### 1.5
 
-![image-20241213002621228](assets/Ex1_5.png)
+![image-20241213002621228](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_5.png?raw=true)
 
 <details><summary>Sol</summary>
 	<pre>
@@ -84,7 +84,7 @@
 </details>
 ### 1.6
 
-![image-20241213020222788](assets/Ex1_6.png)
+![image-20241213020222788](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_6.png?raw=true)
 
 <details><summary>Sol</summary>
 	<pre>
@@ -94,7 +94,7 @@
 
 ### 1.7
 
-![image-20241213021023101](assets/Ex1_7.png)
+![image-20241213021023101](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_7.png?raw=true)
 
 <details><summary>Sol</summary>
 	<pre>
@@ -103,7 +103,7 @@
 
 ### 1.8
 
-![image-20241213021245186](assets/Ex1_8.png)
+![image-20241213021245186](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_8.png?raw=true)
 
 <details><summary>Sol</summary>
     <pre>
