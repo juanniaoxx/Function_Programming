@@ -8,6 +8,8 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 
 > ## 配置环境
 >
+> 方法一：`DrRacket`
+>
 > 以`DrRacket`作为IDE，从[这里](https://mirrors.tuna.tsinghua.edu.cn/racket-installers/recent/)下载，有`Linux` `macOS` `win`三个版本
 >
 > linux下载`xxx.sh`版本
@@ -30,6 +32,45 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 > 下方提示![image-20241212202729093](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%EF%BC%882%EF%BC%89.png?raw=true)
 >
 > 即配置成功！
+>
+> 方法二：Vscode -- Chez插件 [推荐]
+>
+> Linux 
+>
+> ```bash
+> sudo  apt-get install chezscheme #Ubuntu
+> ```
+>
+> 查看是否成功
+>
+> ```bash
+> scheme --version
+> ```
+>
+> 去vscode里面下载`vscode-chez`插件和`run-code`插件
+>
+> 然后在配置文件里面写入
+>
+> ```json
+> {
+>     "code-runner.executorMap": {
+>         "scheme": "scheme"
+>     },
+>     "code-runner.clearPreviousOutput": true,
+>     "code-runner.runInTerminal": true,
+>     "code-runner.saveFileBeforeRun": true
+> }
+> 
+> ```
+>
+> 注意macOS用
+>
+> ```bash
+> brew   install  chez
+> alias scheme="chez"
+> ```
+
+
 
 ## chapter 1 Building Abstractions With Procedures
 
@@ -114,6 +155,10 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 > ```
 >
 > <if <predicate>> <consequent> <alternative>
+>
+> > ### if 
+> >
+> > `if`并不是一个简单的函数，也是采用中断执行。尤其是在Scheme采用应用序的情况下。具体参考Ex1_6关于`new-if 函数实现`和Scheme内置的`if`的
 >
 > `not` `and` `or` 再Scheme里面`and` 和 `or` 一样是短路设计的
 >
@@ -307,7 +352,7 @@ A[f]-->|展开为|B[sum-of-squares]
 
 flowchart TD
 subgraph init
-X_1[guess] & X_2[x] -->F_1[sort]
+X_1[guess] & X_2[x] -->F_1[sqrt]
 end
 F_1 -->F_2[sqrt-iter]
 F_2 --->F_3{good-enough?}

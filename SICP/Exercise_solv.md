@@ -57,14 +57,20 @@
 <details>
 	 	   <summary>Sol</summary>
     <pre>
-    <code >
-(define (sum_of_three a b c)
-  (cond ((<= a b c) (+ b c)) ； a <= b <= c
-        ((<= b a c) (+ a c)) ; b <= a <= c
-        (else (+ a b))))
-    </code>
+	<a href="./Code/Ex1_3.scm">参考代码</a>
+	”判断三个数中的较大值可以用如下决策🌲描述“
+	   x < y
+          /    \
+         /      \
+        /        \
+    x < z         y < z
+     / \           / \
+    /   \         /   \
+x < y  x < y   y < x  y < x
+x < z  z < x   y < z  z < y
     </pre>
 </details>
+
 
 ### 1.4
 
@@ -88,9 +94,11 @@
 
 <details><summary>Sol</summary>
 	<pre>
-		..
+	注意在Scheme中if并不是个简单的过程，二是个很特殊的形式。只有当第一个谓词为假的时候才会执行第二部分，而由于Scheme采用应用序处理程序，new-if实际上每部分都会被执行，导致上述代码会陷入无限递归从而报错！
+	可以参考这个<a href="./Code/Ex1_6.scm">例子</a>,会发现内置的if只打印了good，而自己写的new-if打印了badgood,至于为啥是badgood只是解释器的实现问题而以。
 	</pre>
 </details>
+
 
 ### 1.7
 
@@ -98,8 +106,10 @@
 
 <details><summary>Sol</summary>
 	<pre>
+	本质是浮点数精度问题，优化后的<a href="./Code/Ex1_7.scm">代码</a>
 	</pre>
 </details>
+
 
 ### 1.8
 
