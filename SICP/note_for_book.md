@@ -389,3 +389,231 @@ F_5-->|new guess|F_2
 
 > Scheme并没有`for` 和`while`循环，而是用类似于上面代码的各种调用来完成迭代。
 
+![](./assets/递龟.png)
+
+### Linear Recursion and Iteration
+
+**example: factorials function**
+
+$n!=n\times(n-1)\times(n-1)\dots3\times2\times1$
+
+```scheme
+; 递归
+(define (factorial n)
+    (if (= n 1)
+        1
+        (* n (factorial (- n 1)))))
+```
+
+```mermaid
+stateDiagram-v2
+    [*] --> Start_Factorial
+    Start_Factorial --> Check_Base_Case : Is n = 1?
+    Check_Base_Case --> End_Result : Return 1
+    Check_Base_Case --> Recursive_Call : n > 1
+    
+    Recursive_Call --> Call_Factorial : Call factorial(n - 1)
+    Call_Factorial --> Multiply_Result : Multiply n with result of factorial(n - 1)
+    
+    Multiply_Result --> Call_Factorial
+    Call_Factorial --> End_Result
+    
+    End_Result --> [*]
+
+```
+
+**substitution model**
+
+![image-20241215201518378](assets/Recursion_1.png)
+
+```scheme
+; 迭代实现
+(define (factorial_iter n)
+    (fact-iter 1 1 n))
+
+(define (fact-iter product counter max-count)
+    (if (> counter max-count)
+        product
+        (fact-iter  (* counter product)
+                    (+ counter 1)
+                    max-count)))
+```
+
+```mermaid
+stateDiagram-v2
+    [*] --> Start_Factorial
+    Start_Factorial --> Call_Fact_Iter : Call fact-iter(1, 1, n)
+    
+    Call_Fact_Iter --> Check_Counter : counter > max-count?
+    Check_Counter --> End_Result : Return product
+    Check_Counter --> Recursive_Call : counter <= max-count
+    
+    Recursive_Call --> Update_Product : Multiply counter and product
+    Recursive_Call --> Increment_Counter : Increment counter
+    Recursive_Call --> Call_Fact_Iter : Recursively call fact-iter with new values
+    
+    Update_Product --> Increment_Counter
+    Increment_Counter --> Call_Fact_Iter
+    
+    End_Result --> [*]
+
+```
+
+
+
+![image-20241215202925164](assets/factorials_iter.png)
+
+> ### 一个区别 `recursive procedure` vs `recursive process`
+>
+> 递归过程(recursive prcedure)指的是实现这个过程中，出现了函数调用函数自身的这个句法事实(syntactiv fact)比如上面的两个其实都是递归过程。
+>
+> 递归程序(recursive process)指的是这个程序用的是迭代的思想还是递归的思想构造的，比如说例子1,只有一个参数显然的递归思想，第二个每一步都包含完整的重建系统的信息典型的迭代思想。而不是关注语法面上的实现。
+
+> ## 对比上述两种方法
+>
+> - 递归所需要的系统资源更多，通过替换模型的模拟可以发现递归的模型是先伸长在压缩，而迭代模型始终只需要3个参数。
+>
+> - 迭代过程信息足够在任何步恢复程序，但递归有很多信息被隐藏在递归的过程之中，从任意点恢复通常是困难的。
+
+> ##### Special iteration constructs are syntactic sugar.
+>
+> 总结一下，传统的`for` `while`循环在Scheme里面只是`tail recursive`的语法简化(语法🍬)原文如下
+>
+> > An implementation with this property is called tail-recursive. With a tail-recursive implementation, iteration can be expressed using the ordinary procedure call mechanism, so that special iteration constructs are useful only as syntactic sugar.
+>
+> 注意，对于支持(Taill Call Optimization)尾递归优化的语言，尾递归可以替换迭代。但如果不具有这种特性，则不能完全替代。递归终究是要申请(call)栈空间，而迭代(jump)不需要。
+
+### Tree Recursion
+
+**Example Fibonacci numbers**
+
+$0, 1, 1, 2, 3, 5, 8, 13, 21,\dots$
+
+![image-20241215222247848](assets/Fibonacci.png)
+
+```scheme
+; 递归写法
+(define (fib-rec n)
+    (cond   ((= n 0) 0)
+            ((= n 1) 1)
+            (else  (+   (fib-rec (- n 1))
+                        (fib-rec (- n 2))))))
+```
+
+这个代码与上面求阶乘的代码的区别在与递归的时候会调用两次自己`fib-rec(n-1)`与`fib-rec(n-1)`
+
+展现其`Tree Recursion`
+
+```mermaid
+graph TD
+    A["fib-rec(5)"] --> B["fib-rec(4)"]
+    A["fib-rec(5)"] --> C["fib-rec(3)"]
+    B["fib-rec(4)"] --> D["fib-rec(3)"]
+    B["fib-rec(4)"] --> E["fib-rec(2)"]
+    C["fib-rec(3)"] --> F["fib-rec(2)"]
+    C["fib-rec(3)"] --> G["fib-rec(1)"]
+    D["fib-rec(3)"] --> H["fib-rec(2)"]
+    D["fib-rec(3)"] --> I["fib-rec(1)"]
+    E["fib-rec(2)"] --> J["fib-rec(1)"]
+    F["fib-rec(2)"] --> K["fib-rec(1)"]
+    H["fib-rec(2)"] --> L["fib-rec(1)"]
+
+
+```
+
+状态转移图
+
+```mermaid
+stateDiagram-v2
+    [*] --> Start
+    Start --> Check_N_Zero : n = 0?
+    Start --> Check_N_One : n = 1?
+    Start --> Recursive_Call : n > 1
+    
+    Check_N_Zero --> End_Zero : Return 0
+    Check_N_One --> End_One : Return 1
+    Recursive_Call --> Recursive_Left : fib-rec(n-1)
+    Recursive_Call --> Recursive_Right : fib-rec(n-2)
+    Recursive_Left --> Recursive_Left_Done : Return result of fib-rec(n-1)
+    Recursive_Right --> Recursive_Right_Done : Return result of fib-rec(n-2)
+    Recursive_Left_Done --> Add_Results : Add results of left and right
+    Recursive_Right_Done --> Add_Results
+    Add_Results --> End_Result : Return sum
+    
+    End_Zero --> [*]
+    End_One --> [*]
+    End_Result --> [*]
+
+```
+
+迭代版本
+
+```scheme
+; 迭代写法
+(define (fib n)
+    (fib-iter 1 0 n))
+(define (fib-iter a b count)
+    (if (= count 0)
+        b
+        (fib-iter (+ a b) a (- count 1))))
+```
+
+```mermaid
+stateDiagram-v2
+    [*] --> fib_iter_1 : fib(5)
+    fib_iter_1 : a=1, b=0, count=5
+    fib_iter_1 --> fib_iter_2 : count != 0
+    fib_iter_2 : a=1, b=1, count=4
+    fib_iter_2 --> fib_iter_3 : count != 0
+    fib_iter_3 : a=2, b=1, count=3
+    fib_iter_4:...
+    fib_iter_3-->fib_iter_4
+    fib_iter_4-->fib_iter_5
+    fib_iter_5 --> fib_iter_6 : count != 0
+    fib_iter_6 : a=8, b=5, count=0
+    fib_iter_6 --> [*] : return 5
+
+
+```
+
+### Example:Counting change
+
+​	**How many different ways can we make change for $1.00, given half-dollars, quarters, dimes, nickels, and pennies?** More generally, can we write a procedure to compute the number of ways to change any given amount of money?
+
+```mermaid
+graph TD
+  A[开始: 输入金额 a 和 硬币种类数量 n] --> B{n == 0?}
+  B -- 是 --> C[返回 0]  
+  B -- 否 --> D{a == 0? or n < 0}
+  D -- 是 --> E[返回 1]
+  D -- 否 --> F{是否使用第一个硬币种类?}
+  F -- 否 --> G[递归调用: 计算 a 使用剩余硬币种类数 n-1]
+  F -- 是 --> H[递归调用: 计算 a-d 使用所有硬币种类数 n]
+  G --> I[返回结果]
+  H --> I
+  I --> J[将两者结果相加]
+  J --> K[返回结果]
+
+```
+
+简化版，如果是题目的要求应该有5层
+
+```mermaid
+graph TD
+  A["Make Change(a, n)"] -->| 使用当前硬币 | C["Make Change(a-d, n)"]
+  A["Make Change(a, n)"] -->| 不使用当前硬币 | B["Make Change(a, n-1)"]
+
+  B["Make Change(a, n-1)"] -->| 使用当前硬币 | E["Make Change(a-d, n-1)"]
+  B["Make Change(a, n-1)"] -->| 不使用当前硬币 | D["Make Change(a, n-2)"]
+
+  C["Make Change(a-d, n)"] -->| 使用当前硬币 | G["Make Change(a-2d, n)"]
+  C["Make Change(a-d, n)"] -->| 不使用当前硬币 | F["Make Change(a-d, n-1)"]
+
+  D["Make Change(a, n-2)"] -->| 使用当前硬币 | I["Make Change(a-d, n-2)"]
+  D["Make Change(a, n-2)"] -->| 不使用当前硬币 | H["Make Change(a, n-3)"]
+
+  E["Make Change(a-d, n-1)"] -->| 使用当前硬币 | K["Make Change(a-2d, n-1)"]
+  E["Make Change(a-d, n-1)"] -->| 不使用当前硬币 | J["Make Change(a-d, n-2)"]
+
+```
+

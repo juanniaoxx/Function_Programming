@@ -8,7 +8,7 @@
 
 ### 1.1
 
-![image-20241212233454816](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_1.png?raw=true)
+![image-20241212233454816](./assets/Ex1_1.png)
 
 <details><summary>Sol</summary>
     <pre>
@@ -31,7 +31,7 @@
 
 ### 1.2
 
-![image-20241212234712157](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_2.png?raw=true)
+![image-20241212234712157](./assets/Ex1_2.png)
 
 <details><summary>Sol</summary>
 	<pre>
@@ -52,7 +52,7 @@
 
 ### 1.3
 
-![image-20241212235528248](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_3.png?raw=true)
+![image-20241212235528248](./assets/Ex1_3.png)
 
 <details>
 	 	   <summary>Sol</summary>
@@ -74,13 +74,13 @@ x < z  z < x   y < z  z < y
 
 ### 1.4
 
-![image-20241213002259324](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_4.png?raw=true)
+![image-20241213002259324](./assets/Ex1_4.png)
 
 关注点在`((if (> b 0) + -) a b)` if相当于直接返回了一个表达式
 
 ### 1.5
 
-![image-20241213002621228](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_5.png?raw=true)
+![image-20241213002621228](./assets/Ex1_5.png)
 
 <details><summary>Sol</summary>
 	<pre>
@@ -88,9 +88,9 @@ x < z  z < x   y < z  z < y
 	如果采用"normal-order evaluation"会先判断 x 是否等于0,而不会调用(p),但如果采用"applicative-order evaluation"则在调用(test o (p))时候就会调用(p)导致无穷递归。
 	</pre>
 </details>
-### 1.6
+### **1.6**
 
-![image-20241213020222788](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_6.png?raw=true)
+![image-20241213020222788](./assets/Ex1_6.png)
 
 <details><summary>Sol</summary>
 	<pre>
@@ -102,7 +102,7 @@ x < z  z < x   y < z  z < y
 
 ### 1.7
 
-![image-20241213021023101](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_7.png?raw=true)
+![image-20241213021023101](./assets/Ex1_7.png)
 
 <details><summary>Sol</summary>
 	<pre>
@@ -113,9 +113,355 @@ x < z  z < x   y < z  z < y
 
 ### 1.8
 
-![image-20241213021245186](https://github.com/juanniaoxx/Function_Programming/blob/main/SICP/assets/Ex1_8.png?raw=true)
+![image-20241213021245186](./assets/Ex1_8.png)
 
 <details><summary>Sol</summary>
     <pre>
     </pre>
 </details>
+### **1.9 递归与迭代 trace**
+
+![image-20241215210650130](assets/Ex1_9.png)
+
+<details><summary>Sol</summary>
+<pre>
+	使用(trace plus)就可以观察到结果啦！
+	第一种情况
+        |(plus 4 5)
+        | (plus 3 5)
+        | |(plus 2 5)
+        | | (plus 1 5)
+        | | |(plus 0 5)
+        | | |5
+        | | 6
+        | |7
+        | 8
+        |9
+        9
+        典型的递归过程
+	第二种情况
+	|(plus 4 5)
+        |(plus 3 6)
+        |(plus 2 7)
+        |(plus 1 8)
+        |(plus 0 9)
+        |9
+        9
+        典型的迭代过程
+</pre>
+</details>
+
+### 1.10 Ackermann's function 阿克曼函数
+
+
+
+![image-20241215213330525](assets/Ex1.10.png)
+
+<details><summary>Sol_trace第一个</summary>
+<pre>
+	使用trace 跟踪过程
+	第一个
+        |(A 1 10)
+        | (A 1 9)
+        | |(A 1 8)
+        | | (A 1 7)
+        | | |(A 1 6)
+        | | | (A 1 5)
+        | | | |(A 1 4)
+        | | | | (A 1 3)
+        | | | | |(A 1 2)
+        | | | | | (A 1 1)
+        | | | | | 2 (y == 1)
+        | | | | |(A 0 2)
+        | | | | |4 (x == 0)
+        | | | | (A 0 4)
+        | | | | 8 
+        | | | |(A 0 8)
+        | | | |16 
+        | | | (A 0 16)
+        | | | 32 
+        | | |(A 0 32)
+        | | |64 
+        | | (A 0 64)
+        | | 128 
+        | |(A 0 128)
+        | |256 
+        | (A 0 256)
+        | 512 
+        |(A 0 512)
+        |1024 
+        1024
+</pre>
+</details>
+
+<details><summary>Sol_trace第二个</summary>
+<pre>
+	使用trace 跟踪过程
+        第二个
+        |(A 2 4)
+        | (A 2 3)
+        | |(A 2 2)
+        | | (A 2 1)
+        | | 2  (y == 1)
+        | |(A 1 2)
+        | | (A 1 1)
+        | | 2 (y == 1)
+        | |(A 0 2)
+        | |4 (x == 0)
+        | (A 1 4)
+        | |(A 1 3)
+        | | (A 1 2)
+        | | |(A 1 1)
+        | | |2 (y == 1)
+        | | (A 0 2)
+        | | 4 (x == 0)
+        | |(A 0 4)
+        | |8 
+        | (A 0 8)
+        | 16 
+        |(A 1 16)
+        | (A 1 15)
+        | |(A 1 14)
+        | | (A 1 13)
+        | | |(A 1 12)
+        | | | (A 1 11)
+        | | | |(A 1 10)
+        | | | | (A 1 9)
+        | | | | |(A 1 8)
+        | | | | | (A 1 7)
+        | | | |[10](A 1 6)
+        | | | |[11](A 1 5)
+        | | | |[12](A 1 4)
+        | | | |[13](A 1 3)
+        | | | |[14](A 1 2)
+        | | | |[15](A 1 1)
+        | | | |[15]2 (y == 1)
+        | | | |[14](A 0 2)
+        | | | |[14]4
+        | | | |[13](A 0 4)
+        | | | |[13]8
+        | | | |[12](A 0 8)
+        | | | |[12]16
+        | | | |[11](A 0 16)
+        | | | |[11]32
+        | | | |[10](A 0 32)
+        | | | |[10]64
+        | | | | | (A 0 64)
+        | | | | | 128
+        | | | | |(A 0 128)
+        | | | | |256
+        | | | | (A 0 256)
+        | | | | 512
+        | | | |(A 0 512)
+        | | | |1024
+        | | | (A 0 1024)
+        | | | 2048
+        | | |(A 0 2048)
+        | | |4096
+        | | (A 0 4096)
+        | | 8192
+        | |(A 0 8192)
+        | |16384
+        | (A 0 16384)
+        | 32768
+        |(A 0 32768)
+        |65536
+</pre>
+</details>
+
+<details><summary>Sol_trace第三个</summary>
+<pre>
+	使用trace 跟踪过程
+	第三个
+        |(A 3 3)
+        | (A 3 2)
+        | |(A 3 1)
+        | |2
+        | (A 2 2)
+        | |(A 2 1)
+        | |2
+        | (A 1 2)
+        | |(A 1 1)
+        | |2
+        | (A 0 2)
+        | 4
+        |(A 2 4)
+        | (A 2 3)
+        | |(A 2 2)
+        | | (A 2 1)
+        | | 2
+        | |(A 1 2)
+        | | (A 1 1)
+        | | 2
+        | |(A 0 2)
+        | |4
+        | (A 1 4)
+        | |(A 1 3)
+        | | (A 1 2)
+        | | |(A 1 1)
+        | | |2
+        | | (A 0 2)
+        | | 4
+        | |(A 0 4)
+        | |8
+        | (A 0 8)
+        | 16
+        |(A 1 16)
+        | (A 1 15)
+        | |(A 1 14)
+        | | (A 1 13)
+        | | |(A 1 12)
+        | | | (A 1 11)
+        | | | |(A 1 10)
+        | | | | (A 1 9)
+        | | | | |(A 1 8)
+        | | | | | (A 1 7)
+        | | | |[10](A 1 6)
+        | | | |[11](A 1 5)
+        | | | |[12](A 1 4)
+        | | | |[13](A 1 3)
+        | | | |[14](A 1 2)
+        | | | |[15](A 1 1)
+        | | | |[15]2
+        | | | |[14](A 0 2)
+        | | | |[14]4
+        | | | |[13](A 0 4)
+        | | | |[13]8
+        | | | |[12](A 0 8)
+        | | | |[12]16
+        | | | |[11](A 0 16)
+        | | | |[11]32
+        | | | |[10](A 0 32)
+        | | | |[10]64
+        | | | | | (A 0 64)
+        | | | | | 128
+        | | | | |(A 0 128)
+        | | | | |256
+        | | | | (A 0 256)
+        | | | | 512
+        | | | |(A 0 512)
+        | | | |1024
+        | | | (A 0 1024)
+        | | | 2048
+        | | |(A 0 2048)
+        | | |4096
+        | | (A 0 4096)
+        | | 8192
+        | |(A 0 8192)
+        | |16384
+        | (A 0 16384)
+        | 32768
+        |(A 0 32768)
+        |65536
+        65536
+</pre>
+</details>
+
+```mermaid
+graph TD
+    A1_10["A(1, 10)"] --> A1_9["A(1, 9)"]
+    A1_9 --> A1_8["A(1, 8)"]
+    A1_8 --> A1_7["A(1, 7)"]
+    A1_7 --> A1_6["A(1, 6)"]
+    A1_6 --> A1_5["A(1, 5)"]
+    A1_5 --> A1_4["A(1, 4)"]
+    A1_4 --> A1_3["A(1, 3)"]
+    A1_3 --> A1_2["A(1, 2)"]
+    A1_2 --> A1_1["A(1, 1)"]
+    A1_1 --> Result1["Result = 2"]
+Result1["Result = 2"] -->|回溯| A0_512
+    A1_4 --> A0_8["A(0, 8) = 16"]
+    A1_5 --> A0_16["A(0, 16) = 32"]
+    A1_6 --> A0_32["A(0, 32) = 64"]
+    A1_7 --> A0_64["A(0, 64) = 128"]
+    A1_8 --> A0_128["A(0, 128) = 256"]
+    A1_9 --> A0_256["A(0, 256) = 512"]
+    A1_10 --> A0_512["A(0, 512) = 1024"]
+```
+
+```mermaid
+graph TD
+    A2_4["A(2, 4)"] --> A2_3["A(2, 3)"]
+    A2_3 --> A2_2["A(2, 2)"]
+    A2_2 --> A2_1["A(2, 1)"]
+    A2_1 --> Result2["Result = 2"] -->|回溯|A1_16
+
+    A2_2 --> A1_2["A(1, 2) = 4"]
+    A2_3 --> A1_4["A(1, 4) = 16"]
+    A2_4 --> A1_16["A(1, 16) = 65536"]
+
+```
+
+```mermaid
+graph TD
+    A3_3["A(3, 3)"] --> A3_2["A(3, 2)"]
+    A3_2 --> A3_1["A(3, 1)"]
+    A3_1 --> Result3["Result = 2"] -->|回溯|A2_4
+
+    A3_2 --> A2_2["A(2, 2) = 4"]
+    A3_3 --> A2_4["A(2, 4) = 65536"]
+
+```
+
+<details><summary>Sol</summary>
+<pre>
+	f = 2n
+	g = 2^n
+	h = 连续求n次2的2次幂
+</pre>
+</details>
+### Ex1_11 树型递归与迭代
+
+![image-20241215234316463](assets/Ex1_11.png)
+
+<details><summary>Sol</summary>
+<pre>
+版本1:递归版本 按公式翻译一下
+<code>
+(define (f-rec n)
+    (if (< n 3) 
+        n
+        (+  (f-rec (- n 1)) 
+            (* 2 (f-rec (- n 2)))
+            (* 3 (f-rec (- n 3))))))
+</code>
+迭代版本
+<code>
+(define (f-iter n) (f 0 1 2 n))
+(define (f a b c count)
+        (if (= count 0) 
+            a
+            (f  b
+                c
+                (+ (* a 3) (* b 2) c)
+                (- count 1))))
+</code>
+</pre>
+</details>
+
+### Ex1_12 杨辉三角
+
+![image-20241216002210128](assets/Ex1_12.png)
+
+<details><summary>Sol</summary>
+<pre>
+<code>
+(define (sum x y)
+    (cond   
+        ((= y 0) 1) ; 左边恒定为1
+        ((= x y) 1) ; 右边恒定为1
+        ((or (< x y) (< x 0)) 0) ; 不存在三角形内的数
+        (else (+ (sum (- x 1) (- y 1))
+                (sum (- x 1) y)))))
+(display (sum 10 5))
+(exit)
+</code>
+</pre>
+</details>
+
+### Ex1_13证明Fib(n) = $\frac{(\frac{(1+\sqrt5)}{2})^n}{\sqrt5}$
+
+![image-20241216004429089](assets/Ex1_13.png)
+
+$由Fib(0)=1,Fib(1)=1,Fib(2)=2,同时代入Fib(n)=(\varphi^n-\psi^n)/\sqrt5,发现结论成立，不妨假设对于\\Fib(k)有Fib(k-1)=(\varphi^{k-1}-\psi^{k-1})/\sqrt5\\Fib(k)=(\varphi^k-\psi^k)/\sqrt5\\发现\varphi\times\psi=-1,Fib(k-1)=-(\varphi^n\psi-\psi^n\varphi)/\sqrt5\\代入Fib(k+1)=Fib(k)+Fib(k-1)=(\varphi^n(1-\psi)-\psi^n(1-\varphi))/\sqrt5即\\Fib(k+1)=(\varphi^{k+1}-\psi^{k+1})/\sqrt5\\由数学归纳法可知Fib(n)=(\varphi^n-\psi^n)/\sqrt5$
+

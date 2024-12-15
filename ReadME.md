@@ -22,9 +22,9 @@
 
 > # SICP Todo List
 >
-> - [ ] 1.1节 The Elements of Programming
->   - [ ] Exercise 1.1 - 1.8
->   - [ ] note
+> - [x] 1.1节 The Elements of Programming
+>   - [x] Exercise 1.1 - 1.8
+>   - [x] note
 > - [ ] 1.2 Procedures and the Processes They Generate
 > - [ ] 1.3 Formulating Abstractions
 > - [ ] 2.1 Introduction to Data Abstraction
