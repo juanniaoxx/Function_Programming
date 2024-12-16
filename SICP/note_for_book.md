@@ -6,7 +6,9 @@
 
 SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种典型的语法简单的函数式语言。
 
-> ## 配置环境
+> [!Note]
+>
+> 配置环境
 >
 > 方法一：`DrRacket`
 >
@@ -53,12 +55,12 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 >
 > ```json
 > {
->     "code-runner.executorMap": {
->         "scheme": "scheme"
->     },
->     "code-runner.clearPreviousOutput": true,
->     "code-runner.runInTerminal": true,
->     "code-runner.saveFileBeforeRun": true
+>  "code-runner.executorMap": {
+>      "scheme": "scheme"
+>  },
+>  "code-runner.clearPreviousOutput": true,
+>  "code-runner.runInTerminal": true,
+>  "code-runner.saveFileBeforeRun": true
 > }
 > 
 > ```
@@ -154,9 +156,9 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 >       x ))
 > ```
 >
-> <if <predicate>> <consequent> <alternative>
+> `<if <predicate>> <consequent> <alternative>`
 >
-> > ### if 
+> > [!Caution]
 > >
 > > `if`并不是一个简单的函数，也是采用中断执行。尤其是在Scheme采用应用序的情况下。具体参考Ex1_6关于`new-if 函数实现`和Scheme内置的`if`的
 >
@@ -201,7 +203,9 @@ SICP毕竟是一本比较古老的书，采用的语言是Scheme语言，一种�
 
 Suche exceptions to the general evaluation rule are called *special forms*.the `define` is the only example of a special form that we have seen so far.
 
-> ### That is, (define x 3) is not a combination.
+> [!Caution]
+>
+> **That is, (define x 3) is not a combination.**
 >
 > ```scheme
 > (define x 3)
@@ -285,7 +289,11 @@ end
 
 ```
 
-> ### substitution models 只是一个简单的抽象，并非真实的！
+> [!Caution]
+>
+> substitution models 只是一个简单的抽象，并非真实的！
+
+
 
 结构(f 5) --- with normal-order evaluation[^1]
 
@@ -319,10 +327,11 @@ A[f]-->|展开为|B[sum-of-squares]
 
 > *normal-order evaluation* is "full expand and then reduce" ,发现只有当表达式完全展开后才会代入值计算。
 
-> ### 正则序 VS 应用序(applicative-order evaluation)
+> [!Important]
 >
-> This alternative “fully expand and then reduce” evaluation method is known as normal-order evaluation, in contrast to the “evaluate the arguments and then apply” method that the interpreter actually uses,
-> which is called applicative-order evaluation.
+> 正则序 VS 应用序(applicative-order evaluation)
+>
+> ​	This alternative “fully expand and then reduce” evaluation method is known as normal-order evaluation, in contrast to the “evaluate the arguments and then apply” method that the interpreter actually uses, which is called applicative-order evaluation.
 
 > [!important]
 >
@@ -332,7 +341,9 @@ A[f]-->|展开为|B[sum-of-squares]
 
 ### Example:Square Roots by Newton's Method
 
-> ## Mathematical function VS Computer Procedures
+> [!NOte]
+>
+> **Mathematical function VS Computer Procedures**
 >
 > - Procedures must be effective!
 >
@@ -463,19 +474,25 @@ stateDiagram-v2
 
 ![image-20241215202925164](assets/factorials_iter.png)
 
-> ### 一个区别 `recursive procedure` vs `recursive process`
+> [!Caution]
+>
+> 一个区别 `recursive procedure` vs `recursive process`
 >
 > 递归过程(recursive prcedure)指的是实现这个过程中，出现了函数调用函数自身的这个句法事实(syntactiv fact)比如上面的两个其实都是递归过程。
 >
 > 递归程序(recursive process)指的是这个程序用的是迭代的思想还是递归的思想构造的，比如说例子1,只有一个参数显然的递归思想，第二个每一步都包含完整的重建系统的信息典型的迭代思想。而不是关注语法面上的实现。
 
-> ## 对比上述两种方法
+> [!NOte]
 >
 > - 递归所需要的系统资源更多，通过替换模型的模拟可以发现递归的模型是先伸长在压缩，而迭代模型始终只需要3个参数。
 >
 > - 迭代过程信息足够在任何步恢复程序，但递归有很多信息被隐藏在递归的过程之中，从任意点恢复通常是困难的。
 
-> ##### Special iteration constructs are syntactic sugar.
+
+
+> [!Important]
+>
+> **Special iteration constructs are syntactic sugar.**
 >
 > 总结一下，传统的`for` `while`循环在Scheme里面只是`tail recursive`的语法简化(语法🍬)原文如下
 >
