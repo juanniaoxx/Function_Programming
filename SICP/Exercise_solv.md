@@ -465,3 +465,9 @@ graph TD
 
 $由Fib(0)=1,Fib(1)=1,Fib(2)=2,同时代入Fib(n)=(\varphi^n-\psi^n)/\sqrt5,发现结论成立，不妨假设对于\\Fib(k)有Fib(k-1)=(\varphi^{k-1}-\psi^{k-1})/\sqrt5\\Fib(k)=(\varphi^k-\psi^k)/\sqrt5\\发现\varphi\times\psi=-1,Fib(k-1)=-(\varphi^n\psi-\psi^n\varphi)/\sqrt5\\代入Fib(k+1)=Fib(k)+Fib(k-1)=(\varphi^n(1-\psi)-\psi^n(1-\varphi))/\sqrt5即\\Fib(k+1)=(\varphi^{k+1}-\psi^{k+1})/\sqrt5\\由数学归纳法可知Fib(n)=(\varphi^n-\psi^n)/\sqrt5$
 
+### Ex1_14 递归的时间复杂度与空间复杂度的计算
+
+### Ex1_15 sinx的近似计算
+
+### Ex1_16
+

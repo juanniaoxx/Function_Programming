@@ -634,3 +634,127 @@ graph TD
 
 ```
 
+**ordes of growth (近似增长量)**
+
+> [!important]
+>
+> ⚠️$\theta$ 与$O$表示法有一定的区别
+
+### Example Exponenfiation(快速幂)
+
+常规的幂计算可以用如下递归思路解决
+
+$b^n = b \times b^{n-1}$
+
+$b^0 = 1$
+
+转化成代码为：
+
+```scheme
+(define (expt b n)
+   	(if (= n 0)
+        1
+        (* b (expt b (- n 1)))))
+```
+
+复杂度分析:$\theta(n)$空间复杂度$\theta(n)$
+
+同理转化为迭代也是很简单的一件事
+
+```scheme
+; 迭代版本
+(define (expt b n)
+  	 	 (expt-iter b n 1))
+
+(define (expt-iter b counter product)
+   (if (= counter 0)
+        product
+       (expt-iter b
+                  (- counter 1)
+                  (* b product))))
+```
+
+复杂度分析:$\theta(n)$与$\theta(1)$
+
+上述递归思路也可以用分治思路简化 (fast-expt)
+
+$b^n = (b^{n/2})^2\ \ \ if\ n\ is\ even$
+
+$b^n = b\times b^{n-1}\ \ \ if\ n\ is\ odd$
+
+用scheme代码写出来就是
+
+```scheme
+(define (fast-expt b n)
+    (cond ((= n 0) 1)
+          ((even? n) (square (fast-expt b (/ n 2))))
+          (else (* b (fast0expt b (-n 1))))))
+```
+
+复杂度分析:$\log(n)$与$\log(n)$
+
+### Euclid's algorithm(辗转相除法)
+
+```math
+GCD(a,b)=GCD(b,r)\\
+其中r = a \% b \\
+```
+
+复杂度分析:$\theta(\log (\min(a,b)))$ 
+
+> 最坏情况来自于输入斐波那契数列相邻的两项Fib(n)与Fib(n-1)
+>
+> **Lamé’s Theorem**: If Euclid’s Algorithm requires k steps to compute the GCD of some pair, then the smaller number in the pair must be greater than or equal to the kth Fibonacci number
+
+### Testing for Primality(检测素数)
+
+方法一：朴素法$\theta(\sqrt n)$
+
+```scheme
+(define (smallest-divisor n)
+   (find-divisor n 2))
+
+(define (find-divisor n test-divisor)
+   (cond ((> (square test-divisor) n) n)
+         ((divides? test-divisor n) test-divisor)
+         (else (find-divisor n (+ test-divisor 1)))))
+
+(define (prime? n)
+  (= n (smallest-divisor n)))
+```
+
+⚠️如果是最最朴素的应该是便利整个(1-n)，但事实上只需要查看(1-$\sqrt n$)即可。
+
+> 如果x能被b整除，则商和除数必然有一个小于等于$\sqrt n$
+
+方法二 费马测试
+
+基于费马小定理
+
+> If n is a prime number and a is any positive integer less than n, then a raised to the nth power is congruent to a modulo n.
+>
+> (Ps:"congurent modulo"模同余 两个数同时除以一个相同的数，得到的余数相同。)
+
+⚠️费马测试是基于概率大的推断，而非准确的证明一个数确实素数。
+
+基本思路
+
+```mermaid
+graph TD
+    A[开始] --> B["选择随机整数 a (1 < a < n-1)"]
+    B --> C["计算 a^(n-1) % n"]
+    C --> D{"a^(n-1) % n == 1?"}
+    D -->|是| E[继续选择不同的 a 进行测试]
+    D -->|否| F[返回“n 不是素数”]
+    E --> G{是否所有 a 都通过测试?}
+    G -->|是| H[返回“n 可能是素数”]
+    G -->|否| F
+    F --> I[结束]
+    H --> I[结束]
+```
+
+------
+
+**构建高阶过程**
+
+### Procedures as Arguments(过程作为参数) 
