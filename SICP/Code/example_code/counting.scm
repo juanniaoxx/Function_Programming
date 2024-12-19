@@ -19,5 +19,6 @@
             ((= kinds-of-coins 4) 25)
             ((= kinds-of-coins 5) 50)))
 
-(display (count-change 100))
+(trace cc)
+(display (count-change 11))
 (exit)

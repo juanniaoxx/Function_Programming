@@ -467,7 +467,48 @@ $由Fib(0)=1,Fib(1)=1,Fib(2)=2,同时代入Fib(n)=(\varphi^n-\psi^n)/\sqrt5,发�
 
 ### Ex1_14 递归的时间复杂度与空间复杂度的计算
 
+![image-20241218193353885](assets/EX1_14.png)
+
+<details><summary>Sol</summary>
+<pre>
+递归调用树如下
+                   cc(11, 5)
+                  /         \
+           cc(11, 4)        cc(-39, 5)
+            /    \                (无效)
+      cc(11, 3) cc(-14, 4)(无效)
+        /   \
+   cc(11, 2) cc(1, 3)
+     /   \       \
+cc(11, 1) cc(6, 2) cc(1, 2)
+    |       /   \       |
+    1   cc(6, 1) cc(1, 1)
+        |       |
+       1       1
+Final Total = 4
+复杂度分析 时间复杂度为\theta(2^k),空间复杂度为\theta(k) , 其中k是硬币种类。
+</pre>
+</details>
+
 ### Ex1_15 sinx的近似计算
 
+![image-20241218195148126](assets/Ex1_15_1.png)
+
+![image-20241218195212820](assets/Ex1_15_2.png)
+
+<details>
+	 	   <summary>Sol</summary>
+    <pre>
+    a. 5次 (可以通过trac查看)
+    b.时间和空间复杂度都是log(a)级别的，因为每次递归都是把a = a/3.0的尾递归。
+    </pre>
+</details>
+
 ### Ex1_16
+
+```markdown
+			    		   Design a procedure that evolves an iterative exponentiation process that uses successive squaring and uses a logarithmic number of steps, as does fast-expt.
+(Hint: Using the observation that (b n/2 )2 = (b 2 )n/2 , keep,along with the exponent n and the base b, an additional
+state variable a, and deﬁne the state transformation in such a way that the product ab n is unchanged from state to state. At the beginning of the process a is taken to be 1, and the answer is given by the value of a at the end of the process. In general, the technique of deﬁning an invariant quantity that remains unchanged from state to state is a powerful way to think about the design of iterative algorithms.)
+```
 
