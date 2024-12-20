@@ -512,3 +512,6 @@ Final Total = 4
 state variable a, and deﬁne the state transformation in such a way that the product ab n is unchanged from state to state. At the beginning of the process a is taken to be 1, and the answer is given by the value of a at the end of the process. In general, the technique of deﬁning an invariant quantity that remains unchanged from state to state is a powerful way to think about the design of iterative algorithms.)
 ```
 
+### Ex1_17
+
+![image-20241220165959556](assets/Ex1_17.png)
