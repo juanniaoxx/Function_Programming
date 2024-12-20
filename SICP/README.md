@@ -4,30 +4,25 @@
 
 参考教程为[最经典的SICP](https://www.bilibili.com/video/BV19U4y187U5/?spm_id_from=333.337.search-card.all.click&vd_source=6a2e8fe6292e2cc33457c6e34734309a)
 
-|                       | 阅读材料 | 习题 | 备注 | 完成度 |
-| --------------------- | -------- | ---- | ---- | ------ |
-| Lisp 概览             |          |      |      |        |
-| 计算过程              |          |      |      |        |
-| 高阶过程              |          |      |      |        |
-| 复合数据              |          |      |      |        |
-| Henderson-Esher的例子 |          |      |      |        |
-| 符号化求导系统-引用   |          |      |      |        |
-| 模式匹配              |          |      |      |        |
-| 通用运算符            |          |      |      |        |
-| 赋值、状态和副作用    |          |      |      |        |
-| 计算对象              |          |      |      |        |
-| 流I                   |          |      |      |        |
-| 流II                  |          |      |      |        |
-| 云循环求值器I         |          |      |      |        |
-| 元循环求值器II        |          |      |      |        |
-| 逻辑式程序设计 I      |          |      |      |        |
-| 逻辑是程序设计 II     |          |      |      |        |
-| 寄存机器              |          |      |      |        |
-| 显示控制求值器        |          |      |      |        |
-| 编译                  |          |      |      |        |
-| 存储分配与垃圾收集    |          |      |      |        |
-
 SICP毕竟是一本比较古老的书，采用的语言是Scheme语言.
+
+| **课程名**                           | **阅读材料**                                          | **备注** | **习题** | **进度条**                                  |
+| ------------------------------------ | ----------------------------------------------------- | -------- | -------- | ------------------------------------------- |
+| 第 1 课：程序设计的基本概念          | SICP 第 1.1 节：The Elements of Programming           |          |          | <progress value="100" max="100"></progress> |
+| 第 2 课：递归与迭代                  | SICP 第 1.2 节：Procedures and Processes              |          |          | <progress value="100" max="100"></progress> |
+| 第 3 课：高阶函数                    | SICP 第 1.3 节：Higher-Order Procedures               |          |          | <progress value="50" max="100"></progress>  |
+| 第 4 课：数据抽象                    | SICP 第 2.1 节：Introduction to Data Abstraction      |          |          | <progress value="" max="100"></progress>    |
+| 第 5 课：序列操作                    | SICP 第 2.2 节：Hierarchical Data and Sequences       |          |          | <progress value="" max="100"></progress>    |
+| 第 6 课：符号数据                    | SICP 第 2.3 节：Symbolic Data                         |          |          | <progress value="" max="100"></progress>    |
+| 第 7 课：多种表示与抽象              | SICP 第 2.4 节：Multiple Representations              |          |          | <progress value="" max="100"></progress>    |
+| 第 8 课：系统与通用操作              | SICP 第 2.5 节：Systems with Generic Operations       |          |          | <progress value="" max="100"></progress>    |
+| 第 9 课：状态与可变数据              | SICP 第 3.1 节：Assignment and Local State            |          |          | <progress value="" max="100"></progress>    |
+| 第 10 课：环境模型                   | SICP 第 3.2 节：The Environment Model                 |          |          | <progress value="" max="100"></progress>    |
+| 第 11 课：并发与流                   | SICP 第 3.4 和 3.5 节：Concurrency & Streams          |          |          | <progress value="" max="100"></progress>    |
+| 第 12 课：元语言抽象                 | SICP 第 4.1 节：The Metacircular Evaluator            |          |          | <progress value="" max="100"></progress>    |
+| 第 13 课：逻辑编程                   | SICP 第 4.4 节：Logic Programming                     |          |          | <progress value="" max="100"></progress>    |
+| 第 14 课：寄存器机器模拟器与垃圾回收 | SICP 第 5.2 和 5.3 节：Simulator & Garbage Collection |          |          | <progress value="" max="100"></progress>    |
+| 第 15 课：编译器基础                 | SICP 第 5.5 节：Compilation                           |          |          | <progress value="" max="100"></progress>    |
 
 ### 配置环境
 
