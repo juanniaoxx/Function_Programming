@@ -752,3 +752,4 @@ Scheme里面的`cons` `car` `cdr` 虽然是内置的操作，但可以通过不�
 - (mycons x y) 返回的是一个procedure 而(cons x y)返回的是一个pair(data-abstraction)
 
 ### Hierarchical Data and the Closure Property
+
