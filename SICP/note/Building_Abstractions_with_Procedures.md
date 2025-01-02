@@ -4,13 +4,14 @@
 
 ## Building Abstractions With Procedures
 
-对应04版本内容
-
-- Introduction to Computation
-
-对应书本
-
-- chapter 1
+| Topic                                    | Reading                    | Progress                                    |
+| ---------------------------------------- | -------------------------- | ------------------------------------------- |
+| Introduction to Computation              |                            | <progress value="100" max="100"></progress> |
+| Scheme Basics                            | Section 1.1                | <progress></progress>                       |
+| Procedures, Processes, and Recursion     | Section 1.2                | <progress></progress>                       |
+| Orders of Growth and Kinds of Procedures | Section 1.2                | <progress></progress>                       |
+| Higher Order Procedures                  | Section 1.3                | <progress></progress>                       |
+| Using Higher Order Procedures            | Section 1.3, Section 2.2.4 | <progress></progress>                       |
 
 ### Introduction to Computation
 
