@@ -19,7 +19,7 @@
 
 > [!important]
 >
-> Computer science is dealing with a different kind of knowledeg --- Imperative or "how to" knowledeg!
+> Computer science is dealing with a different kind of knowledge --- Imperative or "how to" knowledge!
 
 |                       | what is                    | example                                                      |
 | --------------------- | -------------------------- | ------------------------------------------------------------ |
@@ -32,7 +32,7 @@
 >   - simple data and simple procedures
 > - Create a set of rules for combining elements of language
 > - Create a set of rules for abstracting elements
->   - treat comple things as primitives
+>   - treat compel things as primitives
 
 > sicp的本质就是告诉我们计算机是一层又一层的抽象，所谓的内置数据类型不过是底层机器的抽象罢了。
 
@@ -52,11 +52,11 @@
 
 > [!note]
 >
-> 1. if self-evalutaing, return value
-> 2. if a name, return value associated whit name in enviroment.
+> 1. if self-evaluating, return value
+> 2. if a name, return value associated whit name in environment.
 > 3. if a special form, do something special
 > 4. if a combination, then
->    1.  Evaluate all of the subexpression of combination(in any order)
+>    1.  Evaluate all of the subexpressions of combination(in any order)
 >    2. apply the operator to the values of the operands (arguments) and return result
 
 |                                |                             |
@@ -97,7 +97,7 @@
 (define score 23)
 ```
 
-associtae `score` with `23`
+associate `score` with `23`
 
 ![image-20241231215636500](assets/Read-Eval-Print.png)
 
@@ -113,7 +113,7 @@ associtae `score` with `23`
 
 > [!important]
 >
-> - `+` is jues a name
+> - `+` just a name
 > - `+` is bound to a value which is a procedure
 > - line 2 binds the name fred to that same value
 
