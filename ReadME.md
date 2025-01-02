@@ -6,7 +6,7 @@
 >
 > - [ ] SICP ----- 函数式编程永远的神书
 >   - [ ] [书本笔记](./SICP/note_for_book)
->   - [ ] 课程看一编
+>   - [ ] 课程看一遍
 >   - [ ] 习题完成
 > - [ ] CS61A ----- python版的SICP
 >   - [ ] 阅读笔记
@@ -25,8 +25,8 @@
 > - [x] 1.1节 The Elements of Programming
 >   - [x] Exercise 1.1 - 1.8
 >   - [x] note
-> - [ ] 1.2 Procedures and the Processes They Generate
-> - [ ] 1.3 Formulating Abstractions
+> - [x] 1.2 Procedures and the Processes They Generate
+> - [x] 1.3 Formulating Abstractions
 > - [ ] 2.1 Introduction to Data Abstraction
 > - [ ] 2.2 Hierachical Data and the Closure Property
 > - [ ] 2.3 Symbolic Data
